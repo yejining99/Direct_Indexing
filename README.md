@@ -20,15 +20,19 @@ Let's define the following notations that are used in the formulation of the lin
 ## Mathematical Formulation
 The problem of tracking an index using a portfolio of KOSPI 200 stocks can be formulated as a linear programming problem with the objective to minimize the absolute difference between the portfolio's returns and the index's returns.
 Mathematically, the problem can be formulated as follows:
-Minimize: |I_t - Σ (W_it * P_it)|
+- Minimize: |I_t - Σ (W<sub>it</sub> * P_it)|
+
 Subject to the constraints:
-Σ W_it = 1, ∀t   (The sum of all weights in the portfolio must be equal to 1)
-W_it ≥ 0, ∀i, ∀t  (Each weight must be greater than or equal to 0, representing a long-only portfolio)
+- Σ W_it = 1, ∀t   (The sum of all weights in the portfolio must be equal to 1)
+- W_it ≥ 0, ∀i, ∀t  (Each weight must be greater than or equal to 0, representing a long-only portfolio)
 
 The objective function seeks to minimize the absolute difference between the index's returns and the portfolio's returns on each trading day. The constraints ensure that the portfolio weights are valid and correspond to a feasible portfolio.
 
 ## Code
 You can check the all the Code in 'Direct Indexing.ipynb'. The Python code implementing this linear programming approach for portfolio construction uses the CVXPY library, a powerful tool for convex optimization problems. The code reads in the price data for the indices and KOSPI 200 stocks, constructs the linear programming problem for each trading day using the CVXPY functions, solves the problem to determine the optimal portfolio weights, and then records these weights along with the resulting portfolio and index returns.
+
 The portfolio's performance in tracking the indices is then visualized using Python's data visualization libraries like Matplotlib and Seaborn. These visualizations include time series plots of the portfolio and index returns, as well as heatmaps showing the distribution of portfolio weights across different stocks.
+
 Additionally, the code also conducts further analysis based on observations from the initial results. This includes a series of experiments where the linear programming problem is solved with altered conditions, such as excluding the stock with the largest weight.
+
 This code provides a practical demonstration of using linear programming for portfolio optimization and offers insights into the strengths and limitations of such an approach.
